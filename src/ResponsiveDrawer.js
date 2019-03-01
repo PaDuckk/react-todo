@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import List from '@material-ui/core/List';
+import {
+  Divider,
+  Drawer,
+  Hidden,
+  List
+} from '@material-ui/core';
+
+import TodoListItem from './TodoListItem'
 // import IconButton from '@material-ui/core/IconButton';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 // import ListItem from '@material-ui/core/ListItem';
@@ -17,47 +21,44 @@ import { withStyles } from '@material-ui/core/styles';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
-  appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
-  menuButton: {
-    marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
   },
 });
 
 class ResponsiveDrawer extends Component {
 
   render() {
-    const { classes, theme, handleDrawerToggle, mobileOpen } = this.props;
+    const { 
+      classes, 
+      theme, 
+      handleDrawerToggle,
+      mobileOpen,
+      todos
+    } = this.props;
+
+    console.log(todos);
+
+    const daily = todos.reduce((daily, todo) => {
+      if (!daily.includes(todo.date)) {
+        daily.push(todo.date);
+      }
+      return daily;
+    },[])
 
     const drawer = (
       <div>
         <div className={classes.toolbar} />
         <Divider />
         <List>
+          {daily.map((date, index) => <TodoListItem key={index} date={date} /> )}
         </List>
       </div>
     );
