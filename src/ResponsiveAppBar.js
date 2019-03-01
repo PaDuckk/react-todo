@@ -59,7 +59,7 @@ class ResponsiveAppBar extends Component {
                     <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" color="inherit" >
-                    Responsive drawer
+                    ToDoApp
                     </Typography>
                 </Toolbar>
             </AppBar>
