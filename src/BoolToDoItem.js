@@ -1,10 +1,23 @@
 import React, {Component} from 'react';
-import {} from '@material-ui/core';
+import {
+    ListItem,
+    ListItemText,
+    Checkbox
+} from '@material-ui/core';
 
 class BoolTodoItem extends Component {
     
     render() {
-        return;
+        const { todo } = this.props;
+        return(
+            <ListItem>
+                <Checkbox
+                tabIndex={-1}
+                disableRipple
+                />
+                <ListItemText primary={`Line item`} />
+            </ListItem>
+        );
     }
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DrawerAppBar from './DrawerAppBar';
+import TodoView from './TodoView';
 import { CssBaseline } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -20,7 +21,8 @@ class App extends Component {
     todos: [
       { id: 0, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-01', alarm: false },
       { id: 1, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-01', alarm: false },
-      { id: 2, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-02', alarm: false }
+      { id: 2, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-02', alarm: false },
+      { id: 3, type: 'bool', text: ' 리액트 소개', checked: false, group:'공부', date:'2019-03-03', alarm: false }
     ]
   }
   render() {
@@ -37,6 +39,7 @@ class App extends Component {
         { /* main content*/ }
         <main className={classes.content}>
           <div className={classes.toolbar} />
+            <TodoView todos={this.state.todos}/>
         </main>
       </div>
     );
