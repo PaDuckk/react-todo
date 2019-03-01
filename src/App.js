@@ -15,6 +15,14 @@ const styles = theme => ({
 });
 
 class App extends Component {
+
+  state = {
+    todos: [
+      { id: 0, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-01', alarm: false },
+      { id: 1, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-01', alarm: false },
+      { id: 2, type: 'bool', text: ' 리액트 소개', checked: false, group:'todo', date:'2019-03-02', alarm: false }
+    ]
+  }
   render() {
     const { classes } = this.props;
 
@@ -24,7 +32,7 @@ class App extends Component {
         <CssBaseline />
 
         { /* App Bar*/ }
-        <DrawerAppBar />
+        <DrawerAppBar todos={this.state.todos} />
         
         { /* main content*/ }
         <main className={classes.content}>
