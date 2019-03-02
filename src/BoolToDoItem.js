@@ -12,25 +12,27 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
 class BoolTodoItem extends Component {
     state = {
-        value: '',
+        value: this.props.todo.text,
         isEdit: false
     }
     handleChange = (e) => {
+        console.log(e.target.value)
         this.setState({
             value: e.target.value
         })
     }
     handleEditClick = (e) => {
+        
         this.setState({
             isEdit: !this.state.isEdit
         })
     }
     render() {
-        const { todo, handleTodoToggle } = this.props;
+        const { handleEditClick, todo, handleTodoToggle } = this.props;
 
         if (this.state.isEdit) {
             return (
-                <ListItem divider onClick={() =>{ handleTodoToggle(todo.id)}}>
+                <ListItem divider>
                     <Input
                     fullWidth
                     disableUnderline
@@ -40,7 +42,12 @@ class BoolTodoItem extends Component {
                     inputProps={{
                         'aria-label': 'Description',
                     }}
-                    onBlulr={this.handleEditClick}
+                    onKeyPress={(e)=> {
+                        if (e.key === 'Enter') {
+                            handleEditClick(todo.id , this.state.value);
+                            this.handleEditClick();
+                        }
+                    }}
                     />
                     <ListItemSecondaryAction>
                         <IconButton aria-label="Edit" onClick={this.handleEditClick}>

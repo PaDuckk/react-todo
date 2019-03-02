@@ -4,7 +4,7 @@ import TodoGroup from './TodoGroup';
 
 class TodoView extends Component {
     render() {
-        const { todos, handleTodoToggle } = this.props;
+        const { handleEditClick, todos, handleTodoToggle } = this.props;
         const groupNames = []
         const groups = todos.reduce((groups, todo) => {
             const group = todo.group; 
@@ -24,6 +24,7 @@ class TodoView extends Component {
                     key={groups[groupName]}
                     todos={groups[groupName]}
                     handleTodoToggle={handleTodoToggle}
+                    handleEditClick={handleEditClick}
                     /> 
                 )})}
             </div>

@@ -31,6 +31,12 @@ class App extends Component {
     stateCopy.todos[i].checked = !stateCopy.todos[i].checked;
     this.setState(stateCopy);
   }
+
+  handleEditClick = (i,newText) => {
+    const stateCopy = Object.assign({}, this.state);
+    stateCopy.todos[i].text = newText;
+    this.setState(stateCopy);
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -47,6 +53,7 @@ class App extends Component {
             <TodoView 
             todos={this.state.todos}
             handleTodoToggle={this.handleTodoToggle.bind(this)}
+            handleEditClick={this.handleEditClick.bind(this)}
             />
         </main>
       </div>
