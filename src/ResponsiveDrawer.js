@@ -50,7 +50,13 @@ class ResponsiveDrawer extends Component {
         daily.push(todo.date);
       }
       return daily;
-    },[])
+    },[]);
+
+    daily.sort((a,b) => {
+      return new Date(a) < new Date(b)? 1 : -1;
+    });
+
+    console.log(daily);
 
     const drawer = (
       <div>
