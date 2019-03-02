@@ -4,7 +4,7 @@ import TodoGroup from './TodoGroup';
 
 class TodoView extends Component {
     render() {
-        const { todos } = this.props;
+        const { todos, handleTodoToggle } = this.props;
         const groupNames = []
         const groups = todos.reduce((groups, todo) => {
             const group = todo.group; 
@@ -16,11 +16,16 @@ class TodoView extends Component {
             }
             return groups;
           },[]);
-          console.log(groupNames);
-
         return (
             <div>
-                {groupNames.map( groupName => <TodoGroup todos={groups[groupName]}/> )}
+                {groupNames.map( groupName =>{
+                    return (
+                    <TodoGroup 
+                    key={groups[groupName]}
+                    todos={groups[groupName]}
+                    handleTodoToggle={handleTodoToggle}
+                    /> 
+                )})}
             </div>
         );
     }

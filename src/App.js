@@ -25,9 +25,14 @@ class App extends Component {
       { id: 3, type: 'bool', text: ' 리액트 소개', checked: false, group:'공부', date:'2019-03-03', alarm: false }
     ]
   }
+
+  handleTodoToggle = (i) => {
+    const stateCopy = Object.assign({}, this.state);
+    stateCopy.todos[i].checked = !stateCopy.todos[i].checked;
+    this.setState(stateCopy);
+  }
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.root}>
         { /* main content*/ }
@@ -39,7 +44,10 @@ class App extends Component {
         { /* main content*/ }
         <main className={classes.content}>
           <div className={classes.toolbar} />
-            <TodoView todos={this.state.todos}/>
+            <TodoView 
+            todos={this.state.todos}
+            handleTodoToggle={this.handleTodoToggle.bind(this)}
+            />
         </main>
       </div>
     );

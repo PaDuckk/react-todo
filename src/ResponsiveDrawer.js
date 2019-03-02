@@ -44,8 +44,6 @@ class ResponsiveDrawer extends Component {
       todos
     } = this.props;
 
-    console.log(todos);
-
     const daily = todos.reduce((daily, todo) => {
       if (!daily.includes(todo.date)) {
         daily.push(todo.date);
