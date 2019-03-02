@@ -13,13 +13,14 @@ class DrawerAppBar extends Component {
     };
     
     render() {
-        const { todos } = this.props
+        const { todos, handleDateClick } = this.props
         return (
             <div>
                 <ResponsiveAppBar 
                     handleDrawerToggle={this.handleDrawerToggle.bind(this)} 
                 />
                 <ResponsiveDrawer
+                    handleDateClick={handleDateClick}
                     todos={todos}                    
                     handleDrawerToggle={this.handleDrawerToggle.bind(this)}
                     mobileOpen={this.state.mobileOpen} 

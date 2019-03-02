@@ -7,9 +7,13 @@ import {
 
 class TodoListItem extends Component {
     render() {
-        const {date} = this.props;
+        const {date, handleDateClick} = this.props;
         return (
-            <ListItem button>
+            <ListItem 
+            key={date}
+            button
+            onClick={() => handleDateClick(date)}
+            >
                 <ListItemText>{date}</ListItemText>
             </ListItem>
         )

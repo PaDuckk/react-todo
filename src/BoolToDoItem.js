@@ -15,18 +15,19 @@ class BoolTodoItem extends Component {
         value: this.props.todo.text,
         isEdit: false
     }
+    
     handleChange = (e) => {
-        console.log(e.target.value)
         this.setState({
             value: e.target.value
         })
     }
+
     handleEditClick = (e) => {
-        
         this.setState({
             isEdit: !this.state.isEdit
         })
     }
+
     render() {
         const { handleEditClick, todo, handleTodoToggle } = this.props;
 

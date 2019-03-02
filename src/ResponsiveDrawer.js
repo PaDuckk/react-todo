@@ -41,7 +41,8 @@ class ResponsiveDrawer extends Component {
       theme, 
       handleDrawerToggle,
       mobileOpen,
-      todos
+      todos,
+      handleDateClick
     } = this.props;
 
     const daily = todos.reduce((daily, todo) => {
@@ -56,7 +57,12 @@ class ResponsiveDrawer extends Component {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          {daily.map((date, index) => <TodoListItem key={index} date={date} /> )}
+          {daily.map((date, index) => 
+            <TodoListItem
+            key={index}
+            date={date}
+            handleDateClick={handleDateClick}
+            /> )}
         </List>
       </div>
     );
